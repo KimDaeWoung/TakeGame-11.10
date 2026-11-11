@@ -5,12 +5,11 @@ public class PlayerShooter : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform muzzle;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public AudioSource fireSfx;
 
+    
+
+   
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +18,10 @@ public class PlayerShooter : MonoBehaviour
         {
             //총알을 만들자
             Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
+            if(fireSfx != null)
+            {
+                fireSfx.Play();
+            }
         }
     }
 }

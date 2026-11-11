@@ -4,6 +4,8 @@ public class PlayerSettings : MonoBehaviour
 {
     public int HP = 100;
 
+    public AudioSource fireSfx;
+
 
     public void TakeDamage(int damage)
     {
@@ -23,16 +25,13 @@ public class PlayerSettings : MonoBehaviour
             Debug.Log("Player가 죽었습니다.");
         }
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+    }
+
+    private void Update()
+    {
+        if (fireSfx != null)
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            fireSfx.Play();
         }
     }
 }

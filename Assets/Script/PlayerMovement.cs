@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
 
     public float turnSpeed = 120.0f;
+    public AudioSource moveAudioSrc;
+    public AudioClip drivingClip;
+    public AudioClip idletClip;
 
 
     Rigidbody rigidBody;
@@ -40,29 +43,54 @@ public class PlayerMovement : MonoBehaviour
         moveInput.x = 0;
         moveInput.y = 0;
 
+        bool ispressed = false;
+
         Keyboard Keyboard = Keyboard.current;
         if (Keyboard.wKey.isPressed == true)
         {
             moveInput.y = 1;
+            ispressed = true;
             //transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
         }
 
         if (Keyboard.aKey.isPressed == true)
         {
             moveInput.x = -1;
+            ispressed = true;
             // transform.Rotate(Vector3.up * -turnSpeed * Time.deltaTime);
         }
 
         if (Keyboard.sKey.isPressed == true)
         {
             moveInput.y = -1;
+            ispressed = true;
             //transform.Translate(Vector3.back * Time.deltaTime * moveSpeed);
         }
 
         if (Keyboard.dKey.isPressed == true)
         {
             moveInput.x = 1;
+            ispressed = true;
             //transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime);
+        }
+
+        //if (moveInput.x != 0 || moveInput.y != 0)
+        if(ispressed == true)
+        {
+            if(moveAudioSrc.clip != drivingClip)
+            {
+                moveAudioSrc.clip = drivingClip;
+                moveAudioSrc.Play();
+            }
+           
+        }
+        else
+        {
+            if (moveAudioSrc.clip != idletClip)
+            {
+                moveAudioSrc.clip = idletClip;
+                moveAudioSrc.Play();
+            }
         }
     }
 }
