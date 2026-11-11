@@ -20,19 +20,13 @@ public class Bullet : MonoBehaviour
             EnemySettings e = collision.gameObject.GetComponent<EnemySettings>();
             if (e != null)
             {
-                int result = e.TakeDamage(damage);
-                if (result <= 0)
-                {
-                    Destroy(collision.gameObject);
-                }
-
+                e.TakeDamage(damage);        
             }
-           
-            Destroy(gameObject);
 
+            Destroy(gameObject);
         }
 
-        if(collision.gameObject.tag != "Player")
+        if (collision.gameObject.tag != "Player")
         {
             Destroy(gameObject);
         }
