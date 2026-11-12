@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySettings : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class EnemySettings : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform muzzle;
     public GameManger GameManager;
+    public NavMeshAgent agent;
+    public GameObject target;
+
 
     public void TakeDamage(int damage)
     {
@@ -39,6 +43,14 @@ public class EnemySettings : MonoBehaviour
         {
             GameManager = FindAnyObjectByType<GameManger>();
         }
+
+        if(GameManager ==  null)
+        {
+            GameManager = FindAnyObjectByType<GameManger>();
+        }
+
+        target = GameObject.FindGameObjectWithTag("Player");
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -49,6 +61,11 @@ public class EnemySettings : MonoBehaviour
         {
             t = 0; //초기화
             Fire();
+        }
+
+        if(target && agent)
+        {
+            agent.SetDestination(target.transform.position);
         }
 
     }

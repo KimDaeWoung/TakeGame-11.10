@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class PlayerFollowCamera : MonoBehaviour
 {
-    public  Vector3 offset = new Vector3(0, 3, -3.5f);
+    public  Vector3 offset = new Vector3(0, 30, -3.5f);
     public Transform targetTransform;
     float smoothTime = 0.2f;
 
