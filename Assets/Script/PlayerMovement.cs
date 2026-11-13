@@ -46,7 +46,36 @@ public class PlayerMovement : MonoBehaviour
         bool ispressed = false;
 
         Keyboard Keyboard = Keyboard.current;
-        if (Keyboard.wKey.isPressed == true)
+
+        //if(Keyboard.shiftKey.isPressed == true)
+        //{
+        //    if (Keyboard.wKey.isPressed == true)
+        //         {
+        //           moveSpeed += 15f;
+        //         }
+        //}
+
+        if (Keyboard.shiftKey.isPressed == true)
+        {
+            if (Keyboard.wKey.isPressed == true)
+            {
+                if(moveSpeed == 5f)
+                {
+                    moveSpeed += 15f;
+                }
+
+            }
+        }
+        if (Keyboard.shiftKey.isPressed == false)
+        {
+            if(moveSpeed != 5f)
+            {
+                moveSpeed = 5f;
+            }
+        }
+
+
+            if (Keyboard.wKey.isPressed == true)
         {
             moveInput.y = 1;
             ispressed = true;
